@@ -1,5 +1,6 @@
 package edu.hydroponicapp;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
@@ -20,10 +21,15 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
-
+    DatabaseHandler dbHandler;
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //JADE ADDED THIS
+        dbHandler = new DatabaseHandler(this);
+
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -34,8 +40,21 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+
+                String time = new java.util.Date(System.currentTimeMillis()).toString();
+                String name = "Jade's Hydroponic System";
+                String ph = "9";
+                long identity = dbHandler.insertData(time, name, ph);
+                if(identity<0)
+                {
+                    Message.message(context,"Unsuccessful");
+                } else
+                {
+                    Message.message(context,"Successful");
+                }
             }
         });
+
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
