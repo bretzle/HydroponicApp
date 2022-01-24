@@ -6,72 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.sensor.SensorFragment">
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/text_sensor"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginStart="8dp"-->
-    <!--        android:layout_marginTop="8dp"-->
-    <!--        android:layout_marginEnd="8dp"-->
-    <!--        android:textAlignment="center"-->
-    <!--        android:textSize="20sp"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/textView2"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginStart="33dp"-->
-    <!--        android:layout_marginTop="52dp"-->
-    <!--        android:text="pH Sensor"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-
-    <!--    <androidx.recyclerview.widget.RecyclerView-->
-    <!--        android:id="@+id/ph_items"-->
-    <!--        android:layout_width="409dp"-->
-    <!--        android:layout_height="283dp"-->
-    <!--        android:layout_marginStart="1dp"-->
-    <!--        android:layout_marginTop="2dp"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/textView2" />-->
-
-
-<!--    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:orientation="vertical">-->
-<!--        &lt;!&ndash;        <RadioGroup&ndash;&gt;-->
-<!--        &lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
-<!--        &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
-<!--        &lt;!&ndash;            android:checkedButton="@+id/linear_layout_rb"&ndash;&gt;-->
-<!--        &lt;!&ndash;            android:gravity="center_horizontal"&ndash;&gt;-->
-<!--        &lt;!&ndash;            android:orientation="horizontal">&ndash;&gt;-->
-
-<!--        &lt;!&ndash;            <RadioButton&ndash;&gt;-->
-<!--        &lt;!&ndash;                android:id="@+id/linear_layout_rb"&ndash;&gt;-->
-<!--        &lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
-<!--        &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-<!--        &lt;!&ndash;                android:text="@string/linear_layout_manager" />&ndash;&gt;-->
-
-<!--        &lt;!&ndash;            <RadioButton&ndash;&gt;-->
-<!--        &lt;!&ndash;                android:id="@+id/grid_layout_rb"&ndash;&gt;-->
-<!--        &lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
-<!--        &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
-<!--        &lt;!&ndash;                android:text="@string/grid_layout_manager" />&ndash;&gt;-->
-<!--        &lt;!&ndash;        </RadioGroup>&ndash;&gt;-->
-
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/recyclerView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent" />-->
-<!--    </LinearLayout>-->
-
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <TableLayout
         android:id="@+id/phTableView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -80,18 +15,36 @@
         android:paddingRight="10dp" >
 
         <TableRow>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Value" />
+                android:text="Value"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Date" />
+                android:text="Date"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </TableRow>
 
     </TableLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="69dp"
+        android:text="pH Sensor"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
