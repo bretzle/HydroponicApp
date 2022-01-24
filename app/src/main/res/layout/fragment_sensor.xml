@@ -41,34 +41,57 @@
     <!--        app:layout_constraintTop_toBottomOf="@+id/textView2" />-->
 
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical">-->
+<!--        &lt;!&ndash;        <RadioGroup&ndash;&gt;-->
+<!--        &lt;!&ndash;            android:layout_width="match_parent"&ndash;&gt;-->
+<!--        &lt;!&ndash;            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--        &lt;!&ndash;            android:checkedButton="@+id/linear_layout_rb"&ndash;&gt;-->
+<!--        &lt;!&ndash;            android:gravity="center_horizontal"&ndash;&gt;-->
+<!--        &lt;!&ndash;            android:orientation="horizontal">&ndash;&gt;-->
+
+<!--        &lt;!&ndash;            <RadioButton&ndash;&gt;-->
+<!--        &lt;!&ndash;                android:id="@+id/linear_layout_rb"&ndash;&gt;-->
+<!--        &lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
+<!--        &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--        &lt;!&ndash;                android:text="@string/linear_layout_manager" />&ndash;&gt;-->
+
+<!--        &lt;!&ndash;            <RadioButton&ndash;&gt;-->
+<!--        &lt;!&ndash;                android:id="@+id/grid_layout_rb"&ndash;&gt;-->
+<!--        &lt;!&ndash;                android:layout_width="wrap_content"&ndash;&gt;-->
+<!--        &lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
+<!--        &lt;!&ndash;                android:text="@string/grid_layout_manager" />&ndash;&gt;-->
+<!--        &lt;!&ndash;        </RadioGroup>&ndash;&gt;-->
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/recyclerView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent" />-->
+<!--    </LinearLayout>-->
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/phTableView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-        <!--        <RadioGroup-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:checkedButton="@+id/linear_layout_rb"-->
-        <!--            android:gravity="center_horizontal"-->
-        <!--            android:orientation="horizontal">-->
+        android:layout_marginTop="100dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
 
-        <!--            <RadioButton-->
-        <!--                android:id="@+id/linear_layout_rb"-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:text="@string/linear_layout_manager" />-->
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Value" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Date" />
+        </TableRow>
 
-        <!--            <RadioButton-->
-        <!--                android:id="@+id/grid_layout_rb"-->
-        <!--                android:layout_width="wrap_content"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:text="@string/grid_layout_manager" />-->
-        <!--        </RadioGroup>-->
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+    </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
