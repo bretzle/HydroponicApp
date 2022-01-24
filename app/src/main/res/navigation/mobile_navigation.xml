@@ -22,4 +22,10 @@
         android:name="edu.hydroponicapp.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_sensor"
+        android:name="edu.hydroponicapp.ui.sensor.SensorFragment"
+        android:label="Sensors"
+        tools:layout="@layout/fragment_sensor" />
 </navigation>
