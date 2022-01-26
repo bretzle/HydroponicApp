@@ -8,6 +8,7 @@ import android.view.Menu;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import com.google.firebase.*;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -23,34 +24,33 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     DatabaseHandler dbHandler;
     Context context;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
         //JADE ADDED THIS
+        super.onCreate(savedInstanceState);
         dbHandler = new DatabaseHandler(this);
-
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         setSupportActionBar(binding.appBarMain.toolbar);
+
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-
                 String time = new java.util.Date(System.currentTimeMillis()).toString();
                 String name = "Jade's Hydroponic System";
                 String ph = "9";
                 long identity = dbHandler.insertData(time, name, ph);
                 if(identity<0)
                 {
-                    Message.message(context,"Unsuccessful");
+                    Snackbar.make(view, "Unsuccessful", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
                 } else
                 {
-                    Message.message(context,"Successful");
+                    Snackbar.make(view, "YAYAYAYAYA", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
                 }
             }
         });

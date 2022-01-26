@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "380861047873",
+    "project_id": "hydroponics-375e5",
+    "storage_bucket": "hydroponics-375e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380861047873:android:0a7d27c2a7a1991bc252c0",
+        "android_client_info": {
+          "package_name": "edu.hydroponicapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "380861047873-4vi35eaektt70ecvovpe4t2ko762kf23.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB378PcrOWkd-2BMHx3wS0H7ko-WyTA1JE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "380861047873-4vi35eaektt70ecvovpe4t2ko762kf23.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

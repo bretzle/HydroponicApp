@@ -1,5 +1,6 @@
 package edu.hydroponicapp;
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,18 +8,30 @@ import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.io.IOException;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 
 public class DatabaseHandler {
     //    public DatabaseHandler(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-//        super(context, name, factory, version);
+    //    super(context, name, factory, version);
 //    }
     DatabaseHelper dbHelper;
-
     public DatabaseHandler(Context context) {
-        dbHelper = new DatabaseHelper(context);
+
+        try
+        {
+            dbHelper = new DatabaseHelper(context);
+            dbHelper.openDataBase();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
     }
+
     public long insertData(String timestamp, String ph, String name)
     {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -27,23 +40,33 @@ public class DatabaseHandler {
         contentValues.put(DatabaseHelper.PH, ph);
         contentValues.put(DatabaseHelper.UNIT_NAME, name);
 
-        long id = db.insert(DatabaseHelper.TABLE_NAME, null , contentValues);
-        return id;
+        return db.insert(DatabaseHelper.TABLE_NAME, null , contentValues);
     }
 
     static class DatabaseHelper extends SQLiteOpenHelper {
+        //ph, water sensor pump time,
+        //potentially more sensors
+        public SQLiteDatabase myDb;
+
         private static final String DATABASE_NAME = "HydroponicDB";
         private static final String TABLE_NAME = "sensorValues";
         private static final int DATABASE_Version = 1;
-        //ph, water sensor pump time,
-        //potentially more sensors
         private static final String TIMESTAMP = "timestamp";
         private static final String UNIT_NAME = "name";
         private static final String PH = "ph";
         private static final String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME +
-                "( " + PH + " INTEGER PRIMARY KEY AUTOINCREMENT ," + UNIT_NAME + "VARCHAR(225)" + PH + "VARCHAR(225));";
+                "( " + TIMESTAMP + " TEXT PRIMARY KEY, "
+                + UNIT_NAME + " TEXT, " + PH + " TEXT);"
+                ;
         // private static final String DROP_TABLE ="DROP TABLE IF EXISTS "+TABLE_NAME;
-        private Context context;
+        private final Context context;
+
+        public void openDataBase() throws SQLException {
+            //Open the database
+            String myPath = "./././././assets";
+            myDb = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);
+            //System.out.println("success");
+        }
 
         public DatabaseHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_Version);
@@ -73,6 +96,5 @@ public class DatabaseHandler {
         }
 
         //TODO: CREATE CRUD METHODS/FUNCTIONALITY
-        //UTI
     }
 }
