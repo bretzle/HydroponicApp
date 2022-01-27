@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 timestamp = new Timestamp(System.currentTimeMillis());
-                //testWrite(dbRef, timestamp);
+                testWrite(dbRef, timestamp);
 
                 //testRead(dbRef);
                 Snackbar.make(view, dbRef.toString(), Snackbar.LENGTH_LONG)
