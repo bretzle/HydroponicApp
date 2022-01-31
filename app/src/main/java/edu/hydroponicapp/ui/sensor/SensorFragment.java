@@ -26,10 +26,12 @@ public class SensorFragment extends Fragment {
     protected String[][] mDataset;
 
     private void initDataset() {
-        mDataset = new String[DATASET_COUNT][2];
+        mDataset = new String[DATASET_COUNT][4];
         for (int i = 0; i < DATASET_COUNT; i++) {
             mDataset[i][0] = "##.#";
-            mDataset[i][1] = "##/## ##:##";
+            mDataset[i][1] = "##.#";
+            mDataset[i][2] = "##.#";
+            mDataset[i][3] = "##/## ##:##";
         }
     }
 
@@ -59,15 +61,25 @@ public class SensorFragment extends Fragment {
 
             ViewGroup.LayoutParams rowParams = rr.getChildAt(0).getLayoutParams();
 
-            TextView label_hello = new TextView(getContext());
-            label_hello.setText(data[0]);
-            label_hello.setLayoutParams(rowParams);
-            row.addView(label_hello);
+            TextView label_ph = new TextView(getContext());
+            label_ph.setText(data[0]);
+            label_ph.setLayoutParams(rowParams);
+            row.addView(label_ph);
 
-            TextView label_android = new TextView(getContext());
-            label_android.setText(data[1]);
-            label_android.setLayoutParams(rowParams);
-            row.addView(label_android);
+            TextView label_temp = new TextView(getContext());
+            label_temp.setText(data[0]);
+            label_temp.setLayoutParams(rowParams);
+            row.addView(label_temp);
+
+            TextView label_humid = new TextView(getContext());
+            label_humid.setText(data[0]);
+            label_humid.setLayoutParams(rowParams);
+            row.addView(label_humid);
+
+            TextView label_date = new TextView(getContext());
+            label_date.setText(data[1]);
+            label_date.setLayoutParams(rowParams);
+            row.addView(label_date);
 
             mTableView.addView(row);
         }
