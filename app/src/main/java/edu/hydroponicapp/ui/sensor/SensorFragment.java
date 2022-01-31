@@ -12,9 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import edu.hydroponicapp.R;
 import edu.hydroponicapp.databinding.FragmentSensorBinding;
 
@@ -22,29 +19,26 @@ public class SensorFragment extends Fragment {
 
     private static final String TAG = "RecyclerViewFragment";
     private static final int DATASET_COUNT = 10;
+
     private FragmentSensorBinding binding;
+
     protected TableLayout mTableView;
     protected String[][] mDataset;
-    private static final String db_url = "https://hydroponicsapp-7ca52-default-rtdb.firebaseio.com/";
 
-    DatabaseReference dbRef = FirebaseDatabase.getInstance(db_url).getReference("sensorValues");
-    DatabaseHandler db;
-
-    //TODO: MOST OF THE WRITING TO THE SENSOR VALUES DB WILL BE FROM THE ARDUINO
-    //THE APPLICATION WILL MOSTLY BE DOING DATA READS AND POSSIBLY POSTS TO A NEW DB
     private void initDataset() {
-        //db = new DatabaseHandler(dbRef);
-        mDataset = new String[DATASET_COUNT][2];
+        mDataset = new String[DATASET_COUNT][4];
         for (int i = 0; i < DATASET_COUNT; i++) {
             mDataset[i][0] = "##.#";
-            mDataset[i][1] = "##/## ##:##";
+            mDataset[i][1] = "##.#";
+            mDataset[i][2] = "##.#";
+            mDataset[i][3] = "##/## ##:##";
         }
     }
-
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         initDataset();
     }
 
@@ -67,15 +61,25 @@ public class SensorFragment extends Fragment {
 
             ViewGroup.LayoutParams rowParams = rr.getChildAt(0).getLayoutParams();
 
-            TextView label_hello = new TextView(getContext());
-            label_hello.setText("data[0]");
-            label_hello.setLayoutParams(rowParams);
-            row.addView(label_hello);
+            TextView label_ph = new TextView(getContext());
+            label_ph.setText(data[0]);
+            label_ph.setLayoutParams(rowParams);
+            row.addView(label_ph);
 
-            TextView label_android = new TextView(getContext());
-            label_android.setText(data[1]);
-            label_android.setLayoutParams(rowParams);
-            row.addView(label_android);
+            TextView label_temp = new TextView(getContext());
+            label_temp.setText(data[0]);
+            label_temp.setLayoutParams(rowParams);
+            row.addView(label_temp);
+
+            TextView label_humid = new TextView(getContext());
+            label_humid.setText(data[0]);
+            label_humid.setLayoutParams(rowParams);
+            row.addView(label_humid);
+
+            TextView label_date = new TextView(getContext());
+            label_date.setText(data[1]);
+            label_date.setLayoutParams(rowParams);
+            row.addView(label_date);
 
             mTableView.addView(row);
         }
