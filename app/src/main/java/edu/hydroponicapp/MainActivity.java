@@ -34,13 +34,14 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     final String db_url ="https://hydroponicsapp-7ca52-default-rtdb.firebaseio.com/";
     FirebaseDatabase database = FirebaseDatabase.getInstance(db_url);
+
     DatabaseReference dbRef = database.getReference("sensorValues");
     Timestamp timestamp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+//        FirebaseDatabase.getInstance(db_url).setPersistenceEnabled(true);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -49,9 +50,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 timestamp = new Timestamp(System.currentTimeMillis());
-                testWrite(dbRef, timestamp);
+                //testWrite(dbRef, timestamp);
 
-                //testRead(dbRef);
+                testRead(dbRef, view);
                 Snackbar.make(view, dbRef.toString(), Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -73,14 +74,18 @@ public class MainActivity extends AppCompatActivity {
         unit.child("ph").setValue("2");
         unit.child("time").setValue(time.toString());
     }
-    private void testRead(DatabaseReference dbRef){
-        dbRef.child("unit_name").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+    private void testRead(DatabaseReference dbRef, View view){
+        dbRef.child("unit_name").child("Durant").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
+                    Snackbar.make(view, "Error getting data", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
                     Log.e("firebase", "Error getting data", task.getException());
                 }
                 else {
+                    Snackbar.make(view, String.valueOf(task.getResult().getValue()), Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
                     Log.d("firebase", String.valueOf(task.getResult().getValue()));
                 }
             }

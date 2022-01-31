@@ -25,27 +25,26 @@ public class SensorFragment extends Fragment {
     private FragmentSensorBinding binding;
     protected TableLayout mTableView;
     protected String[][] mDataset;
+    private static final String db_url = "https://hydroponicsapp-7ca52-default-rtdb.firebaseio.com/";
 
-    DatabaseReference dbRef;
+    DatabaseReference dbRef = FirebaseDatabase.getInstance(db_url).getReference("sensorValues");
     DatabaseHandler db;
 
     //TODO: MOST OF THE WRITING TO THE SENSOR VALUES DB WILL BE FROM THE ARDUINO
     //THE APPLICATION WILL MOSTLY BE DOING DATA READS AND POSSIBLY POSTS TO A NEW DB
     private void initDataset() {
-        db = new DatabaseHandler(dbRef);
-
-//        mDataset = new String[DATASET_COUNT][2];
-//        for (int i = 0; i < DATASET_COUNT; i++) {
-//            mDataset[i][0] = "##.#";
-//            mDataset[i][1] = "##/## ##:##";
-//        }
+        //db = new DatabaseHandler(dbRef);
+        mDataset = new String[DATASET_COUNT][2];
+        for (int i = 0; i < DATASET_COUNT; i++) {
+            mDataset[i][0] = "##.#";
+            mDataset[i][1] = "##/## ##:##";
+        }
     }
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         initDataset();
     }
 
@@ -69,7 +68,7 @@ public class SensorFragment extends Fragment {
             ViewGroup.LayoutParams rowParams = rr.getChildAt(0).getLayoutParams();
 
             TextView label_hello = new TextView(getContext());
-            label_hello.setText(data[0]);
+            label_hello.setText("data[0]");
             label_hello.setLayoutParams(rowParams);
             row.addView(label_hello);
 
