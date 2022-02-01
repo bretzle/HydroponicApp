@@ -19,9 +19,9 @@
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="edu.hydroponicapp.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:name="edu.hydroponicapp.ui.customization.CustomizationFragment"
+        android:label="@string/menu_customization"
+        tools:layout="@layout/fragment_customization" />
 
     <fragment
         android:id="@+id/nav_sensor"
