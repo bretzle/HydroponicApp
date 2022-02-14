@@ -36,7 +36,7 @@ public class SensorFragment extends Fragment {
     protected List<String[]> mDataset = new ArrayList<>();
 
     private void initDataset() {
-        DatabaseReference dbRef = DbHolder.database.getReference("sensorValues");
+        DatabaseReference dbRef = DbHolder.database.getReference("SensorValues");
         Task<DataSnapshot> a = dbRef.get();
 
         while (!a.isComplete()) {}
@@ -45,10 +45,11 @@ public class SensorFragment extends Fragment {
             Map<String, Object> entry = (Map<String, Object>) snap.getValue();
 
             String[] cur = new String[4];
-            cur[0] = String.valueOf(entry.get("ph"));
-            cur[1] = (String) entry.get("temp");
-            cur[2] = (String) entry.get("humidity");
-            cur[3] = (String) entry.get("timestamp");
+
+            cur[0] = (String) entry.get("timestamp");
+            cur[1] = String.valueOf(entry.get("ph"));
+            cur[2] = (String) entry.get("temp");
+            cur[3] = (String) entry.get("humidity");
 
             mDataset.add(cur);
         }
