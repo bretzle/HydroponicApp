@@ -1,5 +1,6 @@
 package edu.hydroponicapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
@@ -15,6 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -27,11 +29,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 import edu.hydroponicapp.databinding.ActivityMainBinding;
+import edu.hydroponicapp.databinding.FragmentGalleryBinding;
+import edu.hydroponicapp.databinding.FragmentHomeBinding;
+import edu.hydroponicapp.ui.gallery.GalleryFragment;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    private FragmentHomeBinding homeBinding;
+    private FragmentGalleryBinding journalBinding;
     final String db_url ="https://hydroponicsapp-7ca52-default-rtdb.firebaseio.com/";
     FirebaseDatabase database = FirebaseDatabase.getInstance(db_url);
 
@@ -44,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
 //        FirebaseDatabase.getInstance(db_url).setPersistenceEnabled(true);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         setSupportActionBar(binding.appBarMain.toolbar);
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
@@ -103,5 +110,19 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+
+    public void onJournalClick(CardView view) {
+        homeBinding = FragmentHomeBinding.inflate(getLayoutInflater());
+        setContentView(homeBinding.getRoot());
+        setSupportActionBar(binding.appBarMain.toolbar);
+        homeBinding.JournalCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, GalleryFragment.class);
+                startActivity(intent);            }
+
+        });
     }
 }
