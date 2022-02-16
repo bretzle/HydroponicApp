@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentGalleryBinding journalBinding;
     final String db_url ="https://hydroponicsapp-7ca52-default-rtdb.firebaseio.com/";
     FirebaseDatabase database = FirebaseDatabase.getInstance(db_url);
-
+    NavController navC;
     DatabaseReference dbRef = database.getReference("sensorValues");
     Timestamp timestamp;
 
@@ -52,18 +52,16 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                timestamp = new Timestamp(System.currentTimeMillis());
-                //testWrite(dbRef, timestamp);
-
-                testRead(dbRef, view);
-                Snackbar.make(view, dbRef.toString(), Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
+//        navC= Navigation.findNavController();
+//
+//        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                navC.navigate(R.id.action_nav_home_to_nav_gallery);
+//
+//
+//            }
+//        });
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
@@ -75,7 +73,10 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
     }
+
     private void testWrite(DatabaseReference dbRef, Timestamp time){
         DatabaseReference unit = dbRef.child("unit_name").child("Durant");
         unit.child("ph").setValue("2");
@@ -113,16 +114,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void onJournalClick(CardView view) {
-        homeBinding = FragmentHomeBinding.inflate(getLayoutInflater());
-        setContentView(homeBinding.getRoot());
-        setSupportActionBar(binding.appBarMain.toolbar);
-        homeBinding.JournalCard.setOnClickListener(new View.OnClickListener() {
+    public void onJournalClick(View view) {
+
+        view.findViewById(R.id.JournalCard).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, GalleryFragment.class);
-                startActivity(intent);            }
+                Intent intent = new Intent(view.getContext(), GalleryFragment.class);
+                startActivity(intent);
+            }
 
         });
     }
+
+
 }
