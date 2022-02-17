@@ -24,13 +24,13 @@
     <fragment
         android:id="@+id/nav_gallery"
         android:name="edu.hydroponicapp.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:label="Journal"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="edu.hydroponicapp.ui.customization.CustomizationFragment"
-        android:label="@string/menu_customization"
+        android:label="Camera"
         tools:layout="@layout/fragment_customization" />
 
     <fragment
