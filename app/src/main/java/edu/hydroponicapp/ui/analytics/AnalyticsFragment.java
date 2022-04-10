@@ -1,4 +1,4 @@
-package edu.hydroponicapp.ui.customization;
+package edu.hydroponicapp.ui.analytics;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -27,13 +27,13 @@ public class CustomizationFragment extends Fragment {
         binding = FragmentCustomizationBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textSlideshow;
-        customizationViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+//        final TextView textView = binding.textSlideshow;
+//        customizationViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+//            @Override
+//            public void onChanged(@Nullable String s) {
+//                textView.setText(s);
+//            }
+//        });
         return root;
     }
 

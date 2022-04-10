@@ -1,4 +1,4 @@
-package edu.hydroponicapp.ui.customization;
+package edu.hydroponicapp.ui.analytics;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -10,7 +10,7 @@ public class CustomizationViewModel extends ViewModel {
 
     public CustomizationViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is camera fragment");
+        mText.setValue("This is analytics fragment");
     }
 
     public LiveData<String> getText() {

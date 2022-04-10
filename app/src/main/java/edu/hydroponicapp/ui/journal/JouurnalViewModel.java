@@ -1,4 +1,4 @@
-package edu.hydroponicapp.ui.gallery;
+package edu.hydroponicapp.ui.journal;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
