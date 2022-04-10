@@ -4,26 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.journal.GalleryFragment">
+    tools:context=".ui.journal.JournalFragment">
 
-    <LinearLayout
-        android:layout_width="412dp"
-        android:layout_height="658dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="-2dp">
-
-        <com.androidplot.xy.XYPlot
-            android:id="@+id/plot"
-            style="@style/APDefacto.Dark"
-            android:layout_width="fill_parent"
-            android:layout_height="597dp"
-            app:domainTitle="domain"
-            app:lineLabelRotationBottom="-45"
-            app:lineLabels="left|bottom"
-            app:rangeTitle="range"
-            app:title="A Simple XY Plot" />
-    </LinearLayout>
     <TextView
         android:id="@+id/text_gallery"
         android:layout_width="match_parent"

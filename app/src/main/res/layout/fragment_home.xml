@@ -189,24 +189,20 @@
                     android:alpha=".00"
                     android:color="#66FF0000"
                     android:text="Button"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView5"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.19"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="211dp"
-                    android:layout_height="234dp"
-                    android:layout_marginEnd="2dp"
-                    android:layout_marginBottom="16dp"
+                    android:id="@+id/imageView2"
+                    android:layout_width="181dp"
+                    android:layout_height="239dp"
+                    android:layout_marginBottom="6dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.483"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/cam" />
+                    app:srcCompat="@drawable/data" />
 
                 <TextView
                     android:id="@+id/textView20"
@@ -214,7 +210,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="52dp"
                     android:gravity="center"
-                    android:text="camera"
+                    android:text="Analytics"
                     android:textAllCaps="true"
                     android:textColor="@color/green_500"
                     android:textSize="14sp"

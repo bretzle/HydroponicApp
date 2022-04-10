@@ -1,6 +1,5 @@
 package edu.hydroponicapp.ui.home;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +14,6 @@ import androidx.navigation.Navigation;
 
 import edu.hydroponicapp.R;
 import edu.hydroponicapp.databinding.FragmentHomeBinding;
-import edu.hydroponicapp.ui.gallery.GalleryFragment;
 
 public class HomeFragment extends Fragment {
 

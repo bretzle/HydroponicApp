@@ -2,7 +2,6 @@ package edu.hydroponicapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
@@ -16,7 +15,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -25,20 +23,18 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.sql.Timestamp;
-import java.util.HashMap;
-import java.util.Map;
 
 import edu.hydroponicapp.databinding.ActivityMainBinding;
-import edu.hydroponicapp.databinding.FragmentGalleryBinding;
+import edu.hydroponicapp.databinding.FragmentJournalBinding;
 import edu.hydroponicapp.databinding.FragmentHomeBinding;
-import edu.hydroponicapp.ui.gallery.GalleryFragment;
+import edu.hydroponicapp.ui.journal.JournalFragment;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
     private FragmentHomeBinding homeBinding;
-    private FragmentGalleryBinding journalBinding;
+    private FragmentJournalBinding journalBinding;
     final String db_url ="https://hydroponicsapp-7ca52-default-rtdb.firebaseio.com/";
     FirebaseDatabase database = FirebaseDatabase.getInstance(db_url);
     NavController navC;
@@ -119,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         view.findViewById(R.id.JournalCard).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), GalleryFragment.class);
+                Intent intent = new Intent(view.getContext(), JournalFragment.class);
                 startActivity(intent);
             }
 
