@@ -6,6 +6,8 @@ import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
+import android.widget.Toast;
+
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -17,6 +19,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -32,6 +37,7 @@ import edu.hydroponicapp.databinding.ActivityMainBinding;
 import edu.hydroponicapp.databinding.FragmentGalleryBinding;
 import edu.hydroponicapp.databinding.FragmentHomeBinding;
 import edu.hydroponicapp.ui.gallery.GalleryFragment;
+import edu.hydroponicapp.ui.home.HomeFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private FragmentHomeBinding homeBinding;
     private FragmentGalleryBinding journalBinding;
-    final String db_url ="https://hydroponicsapp-7ca52-default-rtdb.firebaseio.com/";
+    final String db_url = "https://hydroponicsapp-7ca52-default-rtdb.firebaseio.com/";
     FirebaseDatabase database = FirebaseDatabase.getInstance(db_url);
     NavController navC;
     Timestamp timestamp;
@@ -74,15 +80,15 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-
     }
 
-    private void testWrite(DatabaseReference dbRef, Timestamp time){
+    private void testWrite(DatabaseReference dbRef, Timestamp time) {
         DatabaseReference unit = dbRef.child("unit_name").child("Durant");
         unit.child("ph").setValue("2");
         unit.child("time").setValue(time.toString());
     }
-    private void testRead(DatabaseReference dbRef, View view){
+
+    private void testRead(DatabaseReference dbRef, View view) {
         dbRef.child("1-set").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -90,8 +96,7 @@ public class MainActivity extends AppCompatActivity {
                     Snackbar.make(view, "Error getting data", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                     Log.e("firebase", "Error getting data", task.getException());
-                }
-                else {
+                } else {
                     Snackbar.make(view, String.valueOf(task.getResult().getValue()), Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                     Log.d("firebase", String.valueOf(task.getResult().getValue()));
@@ -99,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -125,6 +131,11 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
+
+
+//    public void FragmentMethod() {
+//        Toast.makeText(MainActivity.this, "Method called From Fragment", Toast.LENGTH_LONG).show();
+//    }
 
 
 }
