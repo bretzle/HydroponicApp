@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity {
     final String db_url ="https://hydroponicsapp-7ca52-default-rtdb.firebaseio.com/";
     FirebaseDatabase database = FirebaseDatabase.getInstance(db_url);
     NavController navC;
-    DatabaseReference dbRef = database.getReference("sensorValues");
     Timestamp timestamp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         unit.child("time").setValue(time.toString());
     }
     private void testRead(DatabaseReference dbRef, View view){
-        dbRef.child("unit_name").child("Durant").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        dbRef.child("1-set").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {

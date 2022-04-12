@@ -28,66 +28,157 @@
             android:layout_height="168dp"
             android:background="#FFFFFF">
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="130dp"
-                android:layout_height="54dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/aldrich"
-                android:text="Welcome!"
-                android:textAllCaps="true"
-                android:textColor="@color/green_500"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:textColor="@android:color/black"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/textView2"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                <LinearLayout
+                    android:id="@+id/linearLayout4"
+                    android:layout_width="191dp"
+                    android:layout_height="147dp"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="10dp">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/todoB"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="8dp"
-                android:text="VIEW PROFILE"
-                app:backgroundTint="@color/green_500"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/aldrich"
+                        android:text="Current Data"
+                        android:textAlignment="textStart"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/editProfileB"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="EDIT PROFILE"
-                android:textColor="@color/green_500"
-                app:layout_constraintBottom_toBottomOf="@+id/todoB"
-                app:layout_constraintStart_toEndOf="@+id/todoB" />
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp">
 
-            <ImageButton
-                android:id="@+id/profileB"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:background="?attr/selectableItemBackground"
-                android:padding="8dp"
-                android:src="@drawable/profile"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.145"
-                tools:ignore="SpeakableTextPresentCheck" />
+                        <TextView
+                            android:id="@+id/textView8"
+                            android:layout_width="90dp"
+                            android:layout_height="match_parent"
+                            android:text="Date:"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/textView14"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="10dp"
+                            android:text="2/15 23:40"
+                            android:textAlignment="center" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp">
+
+                        <TextView
+                            android:id="@+id/textView9"
+                            android:layout_width="90dp"
+                            android:layout_height="match_parent"
+                            android:text="pH:"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/textView15"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="10dp"
+                            android:text="7.1"
+                            android:textAlignment="center" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp">
+
+                        <TextView
+                            android:id="@+id/textView10"
+                            android:layout_width="90dp"
+                            android:layout_height="match_parent"
+                            android:text="Temp:"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/textView16"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="10dp"
+                            android:text="36"
+                            android:textAlignment="center" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="28dp">
+
+                        <TextView
+                            android:id="@+id/textView11"
+                            android:layout_width="90dp"
+                            android:layout_height="match_parent"
+                            android:text="Humidity:"
+                            android:textAlignment="center" />
+
+                        <TextView
+                            android:id="@+id/textView17"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:paddingLeft="10dp"
+                            android:text="80"
+                            android:textAlignment="center" />
+                    </TableRow>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/custom_solution_message"
+                        android:layout_width="174dp"
+                        android:layout_height="108dp"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginEnd="8dp"
+                        android:padding="5dp"
+                        android:text="Based on your current data, we have a smart adjustment " />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="5dp">
+
+                        <Button
+                            android:id="@+id/adjust_button"
+                            android:layout_width="84dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="8dp"
+                            android:backgroundTint="@color/green_500"
+                            android:padding="2dp"
+                            android:text="Smart Adjust"
+                            android:textSize="12sp"
+                            app:iconPadding="8dp"
+                            app:iconTint="@color/green_500"
+                            app:rippleColor="@color/green_500" />
+
+                        <Button
+                            android:id="@+id/button2"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="49dp"
+                            android:backgroundTint="#FFFFFF"
+                            android:text="Info"
+                            android:textColor="@color/green_500"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
