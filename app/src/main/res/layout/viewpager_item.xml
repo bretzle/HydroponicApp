@@ -29,7 +29,7 @@
                     android:id="@+id/plot"
                     style="@style/APDefacto.Dark"
                     android:layout_width="match_parent"
-                    android:layout_height="565dp"
+                    android:layout_height="360dp"
                     app:domainTitle="domain"
                     app:lineLabelRotationBottom="-45"
                     app:lineLabels="left|bottom"
