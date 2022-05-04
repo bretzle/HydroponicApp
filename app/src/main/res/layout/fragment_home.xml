@@ -38,19 +38,19 @@ tools:ignore="HardcodedText">
 
                 <LinearLayout
                     android:id="@+id/linearLayout4"
-                    android:layout_width="191dp"
-                    android:layout_height="147dp"
+                    android:layout_width="174dp"
+                    android:layout_height="170dp"
                     android:orientation="vertical"
                     android:paddingHorizontal="10dp">
 
                     <TextView
                         android:id="@+id/textView7_"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="43dp"
                         android:fontFamily="@font/aldrich"
                         android:text="Current Data"
-                        android:textAlignment="textStart"
-                        android:textSize="24sp"
+                        android:textAlignment="viewEnd"
+                        android:textSize="22sp"
                         android:textStyle="bold" />
 
                     <TableRow
@@ -66,8 +66,8 @@ tools:ignore="HardcodedText">
 
                         <TextView
                             android:id="@+id/date_text_dash"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:text="TextView" />
 
                     </TableRow>
@@ -125,7 +125,7 @@ tools:ignore="HardcodedText">
 
                         <TextView
                             android:id="@+id/hum_text_"
-                            android:layout_width="80dp"
+                            android:layout_width="62dp"
                             android:layout_height="match_parent"
                             android:paddingLeft="10dp"
                             android:text="80"
@@ -135,13 +135,13 @@ tools:ignore="HardcodedText">
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="200dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/custom_solution_message"
-                        android:layout_width="174dp"
+                        android:layout_width="match_parent"
                         android:layout_height="108dp"
                         android:layout_marginTop="7dp"
                         android:layout_marginEnd="8dp"
@@ -157,26 +157,15 @@ tools:ignore="HardcodedText">
 
                         <Button
                             android:id="@+id/adjust_button"
-                            android:layout_width="84dp"
-                            android:layout_height="50dp"
+                            android:layout_width="189dp"
+                            android:layout_height="match_parent"
                             android:backgroundTint="@color/green_500"
                             android:padding="2dp"
-                            android:text="Smart Adjust"
+                            android:text="Change Water"
                             android:textSize="12sp"
                             app:iconTint="@color/green_500"
                             app:rippleColor="@color/green_500" />
 
-                        <Button
-                            android:id="@+id/button2"
-                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                            android:layout_width="84dp"
-                            android:layout_height="50dp"
-                            android:backgroundTint="#FFFFFF"
-                            android:padding="2dp"
-                            android:text="Info"
-                            android:textColor="@color/green_500"
-                            android:textSize="12sp"
-                            app:iconPadding="8dp" />
                     </LinearLayout>
 
                 </LinearLayout>

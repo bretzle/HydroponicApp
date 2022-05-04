@@ -22,6 +22,10 @@ public class ViewPageAdapter extends FragmentStateAdapter {
         super(fragmentManager, lifecycle);
     }
 
+    public ViewPageAdapter(AnalyticsFragment analyticsFragment) {
+        super(analyticsFragment);
+    }
+
     @NonNull
     @Override
     public Fragment createFragment(int i) {
