@@ -3,15 +3,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.analytics.tabs.tab0">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.analytics.tabs.tab0_overview">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="TAB 0"
-        android:gravity="center"
-        android:textColor="@color/ap_black"
-        android:textSize="50dp"
-        />
+        android:isScrollContainer="true"
+        android:orientation="vertical"
+        android:scrollbars="vertical"
+        >
+
+        <com.androidplot.xy.XYPlot
+            android:id="@+id/overviewPlot"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginVertical="50dp"
+            app:domainTitle="domain"
+            app:lineLabelRotationBottom="-45"
+            app:lineLabels="left|bottom"
+            app:marginBottom="@dimen/margin_huge"
+            app:paddingBottom="@dimen/margin_huge"
+            app:paddingTop="@dimen/margin_large"
+            app:rangeTitle="range"
+
+            app:title="A Simple XY Plot"
+            app:titleTextSize="@dimen/margin_medium" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="lkdsnfkjdssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvkjdsfkjdshfkjdshfkjdsfkjsdnfkjdsnfkjsdfkjsdbfkjbdskvbdlkdsbflkjdbflksdbflkjbv bvlebvbbvflkebhjebje fblkjfdbkjdsbnlkjdsbflkdsjkcmv;ldsklkjfdsnvlkjvlkjvlkjbdvk kjfdvkjfdnkjdfnvlkjnfvilnliufeanliauefnlijdfnvlkjdnvlkjc nn fdlvkj felk efjnjrengijrengb jenfkjwbfkjw fjwf " />
+
+    </LinearLayout>
 
 </FrameLayout>

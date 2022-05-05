@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.analytics.tabs.tab3">
+    tools:context=".ui.analytics.tabs.tab3_humidity">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -14,4 +14,10 @@
         android:textColor="@color/ap_black"
         android:textSize="50dp" />
 
+    <com.androidplot.xy.XYPlot
+        android:id="@+id/humPlot"
+        android:layout_width="400dp"
+        android:layout_height="450dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginVertical="50dp" />
 </FrameLayout>

@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.androidplot.util.PixelUtils;
 import com.androidplot.xy.FastLineAndPointRenderer;
 import com.androidplot.xy.LineAndPointFormatter;
 import com.androidplot.xy.SimpleXYSeries;
@@ -73,12 +74,13 @@ public class AnalyticsFragment extends Fragment {
 
         FragmentManager fragmentManager =getParentFragmentManager();
         viewPageAdapter=new ViewPageAdapter(fragmentManager,getLifecycle());
-
         viewPager.setAdapter(viewPageAdapter);
+
         tabLayout.addTab(tabLayout.newTab().setText("Overview"));
         tabLayout.addTab(tabLayout.newTab().setText("ph"));
         tabLayout.addTab(tabLayout.newTab().setText("temp"));
         tabLayout.addTab(tabLayout.newTab().setText("humidity"));
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -125,20 +127,21 @@ public class AnalyticsFragment extends Fragment {
 //        ).attach();
 
 //        need to populate xy plot here
-//        phPlot = (XYPlot) view.findViewById(R.id.plot);
+//        phPlot = view.findViewById(R.id.phPlot);
+//        PixelUtils.init(view.getContext());
 //        ArrayList<Number> ph = convert(phValues);
 //        XYSeries phSeries = new SimpleXYSeries(ph, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "ph Series");
-//        LineAndPointFormatter phFormat = new LineAndPointFormatter(Color.RED, null,null,null);
+//        LineAndPointFormatter phFormat = new LineAndPointFormatter();
 //        phPlot.addSeries(phSeries,phFormat);
 //
 //        //humididty
-//        humPlot = (XYPlot) view.findViewById(R.id.plot);
+//        humPlot = (XYPlot) view.findViewById(R.id.humPlot);
 //        ArrayList<Number> hum = convert(phValues);
 //        XYSeries humSeries = new SimpleXYSeries(hum, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "hum Series");
 //        LineAndPointFormatter humFormat = new LineAndPointFormatter(Color.GREEN, null,null,null);
 //        humPlot.addSeries(humSeries,humFormat);
-//
-//        //
+////
+////        //
 //        tempPlot = (XYPlot) view.findViewById(R.id.plot);
 //        ArrayList<Number> temp = convert(phValues);
 //        XYSeries tempSeries = new SimpleXYSeries(temp, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "temp Series");
