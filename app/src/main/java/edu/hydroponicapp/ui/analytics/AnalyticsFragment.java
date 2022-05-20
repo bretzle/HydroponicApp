@@ -11,6 +11,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.androidplot.util.PixelUtils;
@@ -30,6 +32,7 @@ import java.util.List;
 import java.util.Map;
 
 import edu.hydroponicapp.DbHolder;
+import edu.hydroponicapp.MainActivity;
 import edu.hydroponicapp.R;
 import edu.hydroponicapp.databinding.FragmentAnalyticsBinding;
 
@@ -41,23 +44,18 @@ public class AnalyticsFragment extends Fragment {
     ViewPageAdapter viewPageAdapter;
     ViewPager2 viewPager;
 
-    XYPlot phPlot;// = view.findViewById(R.id.plot);
-    XYPlot humPlot;
-    XYPlot tempPlot;
-    XYPlot overviewPlot;
+    NavController navController;
 
     protected List<String> phValues = new ArrayList<>();
     protected List<String> timestamps = new ArrayList<>();
     protected List<String> humValues = new ArrayList<>();
     protected List<String> tempValues = new ArrayList<>();
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initDataset();
     }
-
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -67,13 +65,11 @@ public class AnalyticsFragment extends Fragment {
 
         binding = FragmentAnalyticsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        //ph
-
         tabLayout = root.findViewById(R.id.tablayout);
         viewPager = root.findViewById(R.id.pager);
 
-        FragmentManager fragmentManager =getParentFragmentManager();
-        viewPageAdapter=new ViewPageAdapter(fragmentManager,getLifecycle());
+        FragmentManager fragmentManager = getParentFragmentManager();
+        viewPageAdapter = new ViewPageAdapter(fragmentManager, getLifecycle());
         viewPager.setAdapter(viewPageAdapter);
 
         tabLayout.addTab(tabLayout.newTab().setText("Overview"));
@@ -86,7 +82,6 @@ public class AnalyticsFragment extends Fragment {
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
             }
-
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
 
@@ -105,54 +100,8 @@ public class AnalyticsFragment extends Fragment {
         return root;
     }
 
-    private ArrayList<Number> convert(List<String> strings) {
-        ArrayList<Number> returnThis = new ArrayList<>();
-        for (int i = 0; i < strings.size(); i++) {
-            returnThis.add(Double.parseDouble(strings.get(i)));
-
-        }
-        return returnThis;
-    }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-//        viewPageAdapter = new ViewPageAdapter(this);
-//        viewPager = view.findViewById(R.id.pager);
-//        viewPager.setAdapter(viewPageAdapter);
-//
-//
-//        TabLayout tabLayout = view.findViewById(R.id.tablayout);
-//        new TabLayoutMediator(tabLayout, viewPager,
-//                (tab, position) -> tab.setText("OBJECT " + (position + 1))
-//        ).attach();
-
-//        need to populate xy plot here
-//        phPlot = view.findViewById(R.id.phPlot);
-//        PixelUtils.init(view.getContext());
-//        ArrayList<Number> ph = convert(phValues);
-//        XYSeries phSeries = new SimpleXYSeries(ph, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "ph Series");
-//        LineAndPointFormatter phFormat = new LineAndPointFormatter();
-//        phPlot.addSeries(phSeries,phFormat);
-//
-//        //humididty
-//        humPlot = (XYPlot) view.findViewById(R.id.humPlot);
-//        ArrayList<Number> hum = convert(phValues);
-//        XYSeries humSeries = new SimpleXYSeries(hum, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "hum Series");
-//        LineAndPointFormatter humFormat = new LineAndPointFormatter(Color.GREEN, null,null,null);
-//        humPlot.addSeries(humSeries,humFormat);
-////
-////        //
-//        tempPlot = (XYPlot) view.findViewById(R.id.plot);
-//        ArrayList<Number> temp = convert(phValues);
-//        XYSeries tempSeries = new SimpleXYSeries(temp, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "temp Series");
-//        LineAndPointFormatter tempFormat = new LineAndPointFormatter(Color.BLUE, null,null,null);
-//        tempPlot.addSeries(tempSeries,tempFormat);
-//
-//
-//        overviewPlot.addSeries(tempSeries, tempFormat);
-//        overviewPlot.addSeries(humSeries,humFormat);
-//        overviewPlot.addSeries(phSeries,phFormat);
-
 
     }
 
@@ -166,7 +115,6 @@ public class AnalyticsFragment extends Fragment {
         for (DataSnapshot snap : a.getResult().getChildren()) {
             Map<String, Object> entry = (Map<String, Object>) snap.getValue();
             String[] cur = new String[5];
-
 
 //            cur[0] = (String) entry.get("timestamp");
 //            cur[1] = String.valueOf(entry.get("ph"));
@@ -188,13 +136,64 @@ public class AnalyticsFragment extends Fragment {
         }
     }
 
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
     }
 }
+
+/** Deprecated Methods
+ *     private ArrayList<Number> convert(List<String> strings) {
+ *         ArrayList<Number> returnThis = new ArrayList<>();
+ *         for (int i = 0; i < strings.size(); i++) {
+ *             returnThis.add(Double.parseDouble(strings.get(i)));
+ *
+ *         }
+ *         return returnThis;
+ *     }
+ *
+ XYPlot phPlot;// = view.findViewById(R.id.plot);
+ XYPlot humPlot;
+ XYPlot tempPlot;
+ XYPlot overviewPlot;
+ //        viewPageAdapter = new ViewPageAdapter(this);
+ //        viewPager = view.findViewById(R.id.pager);
+ //        viewPager.setAdapter(viewPageAdapter);
+ //
+ //
+ //        TabLayout tabLayout = view.findViewById(R.id.tablayout);
+ //        new TabLayoutMediator(tabLayout, viewPager,
+ //                (tab, position) -> tab.setText("OBJECT " + (position + 1))
+ //        ).attach();
+
+ //        need to populate xy plot here
+ //        phPlot = view.findViewById(R.id.phPlot);
+ //        PixelUtils.init(view.getContext());
+ //        ArrayList<Number> ph = convert(phValues);
+ //        XYSeries phSeries = new SimpleXYSeries(ph, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "ph Series");
+ //        LineAndPointFormatter phFormat = new LineAndPointFormatter();
+ //        phPlot.addSeries(phSeries,phFormat);
+ //
+ //        //humididty
+ //        humPlot = (XYPlot) view.findViewById(R.id.humPlot);
+ //        ArrayList<Number> hum = convert(phValues);
+ //        XYSeries humSeries = new SimpleXYSeries(hum, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "hum Series");
+ //        LineAndPointFormatter humFormat = new LineAndPointFormatter(Color.GREEN, null,null,null);
+ //        humPlot.addSeries(humSeries,humFormat);
+ ////
+ ////        //
+ //        tempPlot = (XYPlot) view.findViewById(R.id.plot);
+ //        ArrayList<Number> temp = convert(phValues);
+ //        XYSeries tempSeries = new SimpleXYSeries(temp, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "temp Series");
+ //        LineAndPointFormatter tempFormat = new LineAndPointFormatter(Color.BLUE, null,null,null);
+ //        tempPlot.addSeries(tempSeries,tempFormat);
+ //
+ //
+ //        overviewPlot.addSeries(tempSeries, tempFormat);
+ //        overviewPlot.addSeries(humSeries,humFormat);
+ //        overviewPlot.addSeries(phSeries,phFormat);
+ */
 //// Instances of this class are fragments representing a single
 //// object in our collection.
 //class ViewPagerItem extends Fragment {

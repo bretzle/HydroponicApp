@@ -35,11 +35,12 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private FragmentHomeBinding homeBinding;
     private FragmentJournalBinding journalBinding;
-    final String db_url ="https://hydroponicsapp-7ca52-default-rtdb.firebaseio.com/";
+    final String db_url = "https://hydroponicsapp-7ca52-default-rtdb.firebaseio.com/";
     FirebaseDatabase database = FirebaseDatabase.getInstance(db_url);
     NavController navC;
     DatabaseReference dbRef = database.getReference("sensorValues");
     Timestamp timestamp;
+    NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,12 +74,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void testWrite(DatabaseReference dbRef, Timestamp time){
+    private void testWrite(DatabaseReference dbRef, Timestamp time) {
         DatabaseReference unit = dbRef.child("unit_name").child("Durant");
         unit.child("ph").setValue("2");
         unit.child("time").setValue(time.toString());
     }
-    private void testRead(DatabaseReference dbRef, View view){
+
+    private void testRead(DatabaseReference dbRef, View view) {
         dbRef.child("unit_name").child("Durant").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -86,8 +88,7 @@ public class MainActivity extends AppCompatActivity {
                     Snackbar.make(view, "Error getting data", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                     Log.e("firebase", "Error getting data", task.getException());
-                }
-                else {
+                } else {
                     Snackbar.make(view, String.valueOf(task.getResult().getValue()), Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                     Log.d("firebase", String.valueOf(task.getResult().getValue()));
@@ -95,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -121,6 +123,14 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
-
+//    public void onFabClick(View view){
+//        view.findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                navController = Navigation.findNavController(v);
+//                navController.navigate(R.id.nav_home);
+//            }
+//        });
+//    }
 
 }

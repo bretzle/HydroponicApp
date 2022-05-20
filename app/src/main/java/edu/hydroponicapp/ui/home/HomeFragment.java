@@ -132,7 +132,7 @@ public class HomeFragment extends Fragment {
     boolean changeState;
     String[] cur_data = new String[5];
 
-    final String db_url ="https://hydroponicsapp-7ca52-default-rtdb.firebaseio.com/";
+    final String db_url = "https://hydroponicsapp-7ca52-default-rtdb.firebaseio.com/";
     FirebaseDatabase database = FirebaseDatabase.getInstance(db_url);
     DatabaseReference dbRef = database.getReference("sensorValues");
     DatabaseReference dbRefPH = database.getReference("sensorValues/1-set/ph");
@@ -148,8 +148,9 @@ public class HomeFragment extends Fragment {
 
         return root;
     }
+
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState){
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = Navigation.findNavController(view);
 
@@ -168,18 +169,18 @@ public class HomeFragment extends Fragment {
         temp_text.setText(cur_data[2]);
         hum_text.setText(cur_data[3]);
 
-        boolean changing=getChangeState();
+        boolean changing = getChangeState();
 
         //initUi(changing)
 
-        String b=getAdjustmentMessage(view);
+        String b = getAdjustmentMessage(view);
         TextView textView = view.findViewById(R.id.custom_solution_message);
         textView.setText(b);
 
-        String buttonTxt ="Change Water";
-        if(changing){
-            buttonTxt="Deposit Minerals";
-            b="After you change the water, press the button to deposit the mineral solution";
+        String buttonTxt = "Change Water";
+        if (changing) {
+            buttonTxt = "Deposit Minerals";
+            b = "After you change the water, press the button to deposit the mineral solution";
         }
         adjust_btn.setText(buttonTxt);
         textView.setText(b);
@@ -209,18 +210,17 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 //access db here
                 boolean changing = getChangeState();
-                String poo="";
-                String buttonText="";
+                String poo = "";
+                String buttonText = "";
 
                 //if button has been pressed once
-                if(!changing){//if in state 1, first push:
+                if (!changing) {//if in state 1, first push:
                     buttonText = "Deposit Minerals";
-                    poo="After you change the water, press the button to deposit the mineral solution";
+                    poo = "After you change the water, press the button to deposit the mineral solution";
                     setChangeState(true);
                     setDepositState(false);
-                }
-                else { //if in state 2;
-                    poo=getAdjustmentMessage(view);
+                } else { //if in state 2;
+                    poo = getAdjustmentMessage(view);
                     buttonText = "Change Water";
                     setDepositState(true);
                     setChangeState(false);
@@ -241,23 +241,28 @@ public class HomeFragment extends Fragment {
 
 
     }
-    private void initUI(boolean changeState){
+
+    private void initUI(boolean changeState) {
 
     }
+
     private String readCurrent(View view) {
         DatabaseReference dbRef = DbHolder.database.getReference("SensorValues/1");//sensorValues/1-set");
         Task<DataSnapshot> a = dbRef.get();
 
-        while (!a.isComplete()) {}
+        while (!a.isComplete()) {
+        }
         cur = String.valueOf(a.getResult());
 
         return cur;
     }
+
     private Date getLastWaterChange() throws ParseException {
         DatabaseReference dbRef = DbHolder.database.getReference("waterDetails/lastChange");//sensorValues/1-set");
         Task<DataSnapshot> a = dbRef.get();
 
-        while (!a.isComplete()) {}
+        while (!a.isComplete()) {
+        }
         lastChange = String.valueOf(a.getResult().getValue());
 
         DateFormat df = new SimpleDateFormat("MM/dd/yy (HH:mm:ss)");
@@ -267,28 +272,30 @@ public class HomeFragment extends Fragment {
 
     }
 
-    private boolean getChangeState(){
+    private boolean getChangeState() {
         DatabaseReference dbRef = database.getReference("waterDetails/currentlyChanging");
         Task<DataSnapshot> a = dbRef.get();
-        while (!a.isComplete()) {}
+        while (!a.isComplete()) {
+        }
 
-        changeState =Boolean.parseBoolean(String.valueOf(a.getResult().getValue()));
+        changeState = Boolean.parseBoolean(String.valueOf(a.getResult().getValue()));
         return changeState;
     }
 
-    private void setChangeState(boolean newState){
+    private void setChangeState(boolean newState) {
         DatabaseReference dbRef = database.getReference("waterDetails/currentlyChanging");
         dbRef.setValue(newState);
 
     }
-    private void setDepositState(boolean depositMin){
+
+    private void setDepositState(boolean depositMin) {
         DatabaseReference dbRef = database.getReference("waterDetails/deposit");
         dbRef.setValue(depositMin); //should be true when hitting deposit button, reset to false in python
 
     }
 
 
-    public String getAdjustmentMessage(View view){
+    public String getAdjustmentMessage(View view) {
         /**
          * 2 cases:
          * need to change water
@@ -309,18 +316,18 @@ public class HomeFragment extends Fragment {
                     = (difference_In_Time
                     / (1000 * 60 * 60));
             urmom = difference_In_Hours;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         String dashboardMessage = "";
-        if(urmom>168){
-            dashboardMessage = "It has been "+urmom+ " hours since you have changed your water, time to change";
+        if (urmom > 168) {
+            dashboardMessage = "It has been " + urmom + " hours since you have changed your water, time to change";
             //send notification
             //enable button
 
-        } else{
-            dashboardMessage = "It has been "+urmom+ " hours since you have changed your water, we will notify you when you need to change";
+        } else {
+            dashboardMessage = "It has been " + urmom + " hours since you have changed your water, we will notify you when you need to change";
 
         }
         return dashboardMessage;
@@ -332,7 +339,8 @@ public class HomeFragment extends Fragment {
         DatabaseReference dbRef = DbHolder.database.getReference("sensorValues/1-set");//TEST
         Task<DataSnapshot> a = dbRef.get();
 
-        while (!a.isComplete()) {}
+        while (!a.isComplete()) {
+        }
 
         //DataSnapshot b = a.getResult().child("1-set");//RESTORE
         DataSnapshot b = a.getResult();//.child("1-set");//TEST
@@ -345,6 +353,7 @@ public class HomeFragment extends Fragment {
         cur_data[3] = (String) initial_entry.get("humidity");
         cur_data[4] = (String) initial_entry.get("mineral");
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
@@ -355,23 +364,23 @@ public class HomeFragment extends Fragment {
 }
 /**
  * deprecated methods:
- *     private String fixui(boolean state){
- *         String poo="";
- *         if(state){
+ * private String fixui(boolean state){
+ * String poo="";
+ * if(state){
  * //            adjust_btn.setEnabled(false);
  * //            adjust_btn.setBackgroundColor(Color.DKGRAY);
- *             poo="Deposit Minerals";
- *         } else{
+ * poo="Deposit Minerals";
+ * } else{
  * //            adjust_btn.setEnabled(true);
  * //            adjust_btn.setBackgroundColor(1992772);
- *             poo="Change Water";
- *
- *         }
- *         return poo;
- *
- *     }
- *
- *     //        view.findViewById(R.id.mineral_button).setOnClickListener(new View.OnClickListener() {
+ * poo="Change Water";
+ * <p>
+ * }
+ * return poo;
+ * <p>
+ * }
+ * <p>
+ * //        view.findViewById(R.id.mineral_button).setOnClickListener(new View.OnClickListener() {
  * //            @Override
  * //            public void onClick(View v) {
  * //                //access db here
@@ -399,7 +408,7 @@ public class HomeFragment extends Fragment {
  * //
  * //        TextView date_text = view.findViewById(R.id.date_text);
  * //        date_text.setText(mDataset.get(0)[0]);
- *
+ * <p>
  * //        int x=11;
  * //        double mineral=0.0;
  * //        String curMin = readCurrentMineral(view);
@@ -414,12 +423,12 @@ public class HomeFragment extends Fragment {
  * //        String c = b.substring(p, p+3);
  * //
  * //    }
- *     private String readCurrentMineral(View view){
+ * private String readCurrentMineral(View view){
  * //        String b = readCurrent(view);
  * //        int p = b.indexOf("mineral")+8;
  * //        String c = b.substring(p);
  * //        String d = c.substring(0,c.indexOf(","));
- *         return cur_data[4];
- *
- *     }
+ * return cur_data[4];
+ * <p>
+ * }
  */

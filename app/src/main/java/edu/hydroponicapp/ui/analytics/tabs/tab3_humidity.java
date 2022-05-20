@@ -1,5 +1,6 @@
 package edu.hydroponicapp.ui.analytics.tabs;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,10 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.androidplot.util.PixelUtils;
+import com.androidplot.xy.BoundaryMode;
 import com.androidplot.xy.LineAndPointFormatter;
 import com.androidplot.xy.SimpleXYSeries;
+import com.androidplot.xy.StepMode;
 import com.androidplot.xy.XYPlot;
 import com.androidplot.xy.XYSeries;
+import com.androidplot.xy.YValueMarker;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
@@ -55,11 +59,27 @@ public class tab3_humidity extends Fragment {
 
         XYPlot humPlot = (XYPlot) view.findViewById(R.id.humPlot);
 
-        ArrayList<Number> hum = convert(humValues);
-        XYSeries humSeries = new SimpleXYSeries(hum, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "humidity Series");
-        LineAndPointFormatter humFormat = new LineAndPointFormatter();
+//        ArrayList<Number> hum = convert(humValues);
+        int x=100;
+        int y=40;
+        XYSeries humSeries = new SimpleXYSeries(SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "hum Series",47,48,46,48,47,49,47,48,49,48,47,46,47,46,47);
+        XYSeries control6 = new SimpleXYSeries(SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "", x,x,x,x,x,x,x,x,x,x,x,x,x,x,x);
+        XYSeries control7 = new SimpleXYSeries(SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "", y,y,y,y,y,y,y,y,y,y,y,y,y,y,y);
+        XYSeries control = new SimpleXYSeries(SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "", 40,100);
+
+        LineAndPointFormatter humFormat = new LineAndPointFormatter(Color.BLUE, null, null, null);
+        LineAndPointFormatter controlFormat = new LineAndPointFormatter(Color.rgb(128,0,0), null, null, null);
+        LineAndPointFormatter urmomFormat = new LineAndPointFormatter(null, null, null, null);
+
+        humPlot.centerOnRangeOrigin(45);
+        humPlot.setDomainBoundaries(30,100, BoundaryMode.GROW);
+
+        humPlot.setDomainStep(StepMode.INCREMENT_BY_VAL,(int) 1);
 
         humPlot.addSeries(humSeries, humFormat);
+        humPlot.addSeries(control6, controlFormat);
+        humPlot.addSeries(control7, controlFormat);
+        humPlot.addSeries(control, urmomFormat);
 
     }
 

@@ -1,23 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context=".ui.analytics.tabs.tab2_temp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="TAB 2"
-        android:gravity="center"
-        android:textColor="@color/ap_black"
-        android:textSize="50dp"/>
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="586dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginVertical="30dp"
+        android:background="#000000"
+        android:backgroundTint="#000000"
+        app:cardCornerRadius="15dp">
 
-    <com.androidplot.xy.XYPlot
-        android:id="@+id/tempPlot"
-        android:layout_width="400dp"
-        android:layout_height="450dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginVertical="50dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="622dp"
+            android:orientation="vertical">
+
+            <com.androidplot.xy.XYPlot
+                android:id="@+id/tempPlot"
+                android:layout_width="match_parent"
+                android:layout_height="403dp"
+                android:layout_gravity="center_horizontal"
+                app:backgroundColor="#132F1A"
+
+                app:graphHeight="330dp"
+                app:graphHeightMode="absolute"
+                app:graphWidth="365dp"
+                app:graphWidthMode="absolute"
+
+                app:legendAnchor="bottom_middle"
+
+                app:legendIconHeightMode="absolute"
+                app:legendWidthMode="fill"
+                app:lineLabelAlignLeft="left"
+
+                app:lineLabels="left|bottom"
+                app:paddingBottom="@dimen/margin_large"
+                app:paddingTop="@dimen/margin_medium"
+                app:rangeTitle="Temperature values [Degrees F]"
+                app:title="15 most recent temperature Values"
+                app:titleTextSize="@dimen/margin_medium"
+                app:rangeTitleTextSize="16sp"
+                app:domainTitle="Instance No."
+                app:domainTitleTextSize="16sp"
+                app:legendVisible="false"
+
+                />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="match_parent"
+                android:layout_height="194dp"
+                android:background="#F7F7F7"
+                android:backgroundTint="#FFFFFF"
+                android:padding="5dp"
+                android:text="Temperature Plot: Radishes like temperatures between 50 and 70 degrees Fahrenheit, with temperatures in the low 60s being best. Hot weather can cause the plants to bolt and decline in quality. They can get tough and woody or spongy with hollow centers. \n\n If your values consistently cross the recommended range, consider relocating your system."
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
 </FrameLayout>

@@ -9,11 +9,7 @@ public class JouurnalViewModel extends ViewModel {
     private MutableLiveData<String> mText;
 
     public JouurnalViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is journal fragment");
+
     }
 
-    public LiveData<String> getText() {
-        return mText;
-    }
 }

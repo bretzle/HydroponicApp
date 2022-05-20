@@ -1,42 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#000000"
+    android:backgroundTint="#000000"
     tools:context=".ui.analytics.tabs.tab0_overview">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:isScrollContainer="true"
-        android:orientation="vertical"
-        android:scrollbars="vertical"
-        >
+        android:background="@color/black"
+        android:orientation="vertical">
 
-        <com.androidplot.xy.XYPlot
-            android:id="@+id/overviewPlot"
-            android:layout_width="400dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginVertical="50dp"
-            app:domainTitle="domain"
-            app:lineLabelRotationBottom="-45"
-            app:lineLabels="left|bottom"
-            app:marginBottom="@dimen/margin_huge"
-            app:paddingBottom="@dimen/margin_huge"
-            app:paddingTop="@dimen/margin_large"
-            app:rangeTitle="range"
+        <androidx.cardview.widget.CardView
+            android:layout_width="370dp"
+            android:layout_height="430dp"
+            android:layout_margin="20dp"
+            android:layout_marginVertical="75dp"
+            app:cardCornerRadius="15dp"
+            app:contentPadding="5dp">
 
-            app:title="A Simple XY Plot"
-            app:titleTextSize="@dimen/margin_medium" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView2"
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="143dp"
+                    android:layout_height="35dp"
+                    android:text="WHAT IS IT?"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="95dp"
+                    android:text="pH Plot: Ideally, your solution's pH value should remain between 6 and 7. Use this plot to track the sensor readings over a variable amount of time by changing the sort filter."
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="match_parent"
+                    android:layout_height="141dp"
+                    android:text="Temperature Plot: Radishes like temperatures between 40 and 70 degrees Fahrenheit, with temperatures in the low 60s being best. Hot weather can cause the plants to bolt and decline in quality. They can get tough and woody or spongy with hollow centers. "
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="133dp"
+                    android:text="Humidity plot: measure of the water vapor content of air. This value is measured as a percentage, so it will vary depending on the location. Humidity typically isn't an issue as long as adequate soil moisture is maintained and there's good air flow around the plants."
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/imageView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="lkdsnfkjdssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvkjdsfkjdshfkjdshfkjdsfkjsdnfkjdsnfkjsdfkjsdbfkjbdskvbdlkdsbflkjdbflksdbflkjbv bvlebvbbvflkebhjebje fblkjfdbkjdsbnlkjdsbflkdsjkcmv;ldsklkjfdsnvlkjvlkjvlkjbdvk kjfdvkjfdnkjdfnvlkjnfvilnliufeanliauefnlijdfnvlkjdnvlkjc nn fdlvkj felk efjnjrengijrengb jenfkjwbfkjw fjwf " />
+            android:src="@mipmap/ic_channel" />
 
     </LinearLayout>
-
 </FrameLayout>

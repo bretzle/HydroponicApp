@@ -12,8 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.androidplot.util.PixelUtils;
+import com.androidplot.xy.BoundaryMode;
 import com.androidplot.xy.LineAndPointFormatter;
 import com.androidplot.xy.SimpleXYSeries;
+import com.androidplot.xy.StepMode;
 import com.androidplot.xy.XYPlot;
 import com.androidplot.xy.XYSeries;
 import com.google.android.gms.tasks.Task;
@@ -48,11 +50,27 @@ public class tab2_temp extends Fragment {
 
         XYPlot tempPlot = (XYPlot) view.findViewById(R.id.tempPlot);
 
-        ArrayList<Number> temp = convert(tempValues);
-        XYSeries tempSeries = new SimpleXYSeries(temp, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "temp Series");
-        LineAndPointFormatter tempFormat = new LineAndPointFormatter(Color.BLUE, null, null, null);
+//        ArrayList<Number> temp = convert(tempValues);
+        int x=55;
+        int y=75;
+        XYSeries tempSeries = new SimpleXYSeries(SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "temp Series",56,62,59,60,63,59,65,64,67,64,63,65,68,63,59);
+        XYSeries control6 = new SimpleXYSeries(SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "", x,x,x,x,x,x,x,x,x,x,x,x,x,x,x);
+        XYSeries control7 = new SimpleXYSeries(SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "", y,y,y,y,y,y,y,y,y,y,y,y,y,y,y);
+        XYSeries control = new SimpleXYSeries(SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "", 50,80);
+
+        LineAndPointFormatter tempFormat = new LineAndPointFormatter(Color.GREEN, null, null, null);
+        LineAndPointFormatter controlFormat = new LineAndPointFormatter(Color.rgb(128,0,0), null, null, null);
+        LineAndPointFormatter urmomFormat = new LineAndPointFormatter(null, null, null, null);
+
+        tempPlot.centerOnRangeOrigin(65);
+        tempPlot.setDomainBoundaries(50,80, BoundaryMode.GROW);
+
+        tempPlot.setDomainStep(StepMode.INCREMENT_BY_VAL,(int) 1);
 
         tempPlot.addSeries(tempSeries, tempFormat);
+        tempPlot.addSeries(control6, controlFormat);
+        tempPlot.addSeries(control7, controlFormat);
+        tempPlot.addSeries(control, urmomFormat);
     }
 
     private ArrayList<Number> convert(List<String> strings) {

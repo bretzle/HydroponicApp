@@ -34,22 +34,32 @@ public class SensorFragment extends Fragment {
 
     protected TableLayout mTableView;
     protected List<String[]> mDataset = new ArrayList<>();
+    String[] cur_data = new String[4];
+
 
     private void initDataset() {
-        DatabaseReference dbRef = DbHolder.database.getReference("SensorValues");
-        Task<DataSnapshot> a = dbRef.get();
+        DatabaseReference dbRef_history = DbHolder.database.getReference("sensorValues/2-push");
+        DatabaseReference dbRef_current = DbHolder.database.getReference("sensorValues/1-set");
 
-        while (!a.isComplete()) {}
+        Task<DataSnapshot> a = dbRef_history.get();
+        Task<DataSnapshot> b = dbRef_current.get();
+
+        while (!a.isComplete() || !b.isComplete()) {}
+
+        cur_data[0] = (String)b.getResult().child("timestamp").getValue();
+        cur_data[1] = (String)b.getResult().child("ph").getValue();
+        cur_data[2] = (String)b.getResult().child("temperature").getValue();
+        cur_data[3] = "16.00";//(String)b.getResult().child("humidity").getValue();
 
         for (DataSnapshot snap : a.getResult().getChildren()) {
             Map<String, Object> entry = (Map<String, Object>) snap.getValue();
 
             String[] cur = new String[4];
 
-            cur[0] = (String) entry.get("timestamp");
-            cur[1] = String.valueOf(entry.get("ph"));
-            cur[2] = (String) entry.get("temp");
-            cur[3] = (String) entry.get("humidity");
+            cur[0] = "05/10 (16:53:13)";//(String) entry.get("timestamp");
+            cur[1] ="7.2";// String.valueOf(entry.get("ph"));
+            cur[2] = "81.32";//(String) entry.get("temperature");
+            cur[3] = "16.00";//(String) entry.get("humidity");
 
             mDataset.add(cur);
         }
@@ -75,6 +85,16 @@ public class SensorFragment extends Fragment {
         int last = mTableView.getChildCount() - 1;
 
         TableRow rr = (TableRow) mTableView.getChildAt(last);
+
+        TextView date = rootView.findViewById(R.id.sensor_data);
+        TextView temp = rootView.findViewById(R.id.sensor_temp);
+        TextView hum = rootView.findViewById(R.id.sensor_hum);
+        TextView ph = rootView.findViewById(R.id.sensor_ph);
+
+        date.setText(cur_data[0]);
+        ph.setText(cur_data[1]);
+        temp.setText(cur_data[2]);
+        hum.setText(cur_data[3]);
 
         for (String[] data : mDataset) {
             TableRow row = new TableRow(getContext());

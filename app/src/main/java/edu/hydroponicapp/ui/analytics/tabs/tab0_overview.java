@@ -67,29 +67,29 @@ public class tab0_overview extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 //        need to populate xy plot here
-        PixelUtils.init(view.getContext());
-        XYPlot overviewPlot = (XYPlot) view.findViewById(R.id.overviewPlot);
-        //ph
-        ArrayList<Number> ph = convert(phValues);
-        XYSeries phSeries = new SimpleXYSeries(ph, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "ph Series");
-        LineAndPointFormatter phFormat = new LineAndPointFormatter();
-
-        //humididty
-        ArrayList<Number> hum = convert(humValues);
-        XYSeries humSeries = new SimpleXYSeries(hum, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "hum Series");
-        LineAndPointFormatter humFormat = new LineAndPointFormatter(Color.GREEN, null, null, null);
-
-        //temp
-        ArrayList<Number> temp = convert(tempValues);
-        XYSeries tempSeries = new SimpleXYSeries(temp, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "temp Series");
-        LineAndPointFormatter tempFormat = new LineAndPointFormatter(Color.BLUE, null, null, null);
-
-//        overviewPlot.getGraph().setRotation(Widget.Rotation.NINETY_DEGREES);
-        //TODO: FORMAT GRAPH!!!
-
-        overviewPlot.addSeries(tempSeries, tempFormat);
-        overviewPlot.addSeries(humSeries, humFormat);
-        overviewPlot.addSeries(phSeries, phFormat);
+//        PixelUtils.init(view.getContext());
+//        XYPlot overviewPlot = (XYPlot) view.findViewById(R.id.overviewPlot);
+//        //ph
+//        ArrayList<Number> ph = convert(phValues);
+//        XYSeries phSeries = new SimpleXYSeries(ph, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "ph Series");
+//        LineAndPointFormatter phFormat = new LineAndPointFormatter();
+//
+//        //humididty
+//        ArrayList<Number> hum = convert(humValues);
+//        XYSeries humSeries = new SimpleXYSeries(hum, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "hum Series");
+//        LineAndPointFormatter humFormat = new LineAndPointFormatter(Color.GREEN, null, null, null);
+//
+//        //temp
+//        ArrayList<Number> temp = convert(tempValues);
+//        XYSeries tempSeries = new SimpleXYSeries(temp, SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "temp Series");
+//        LineAndPointFormatter tempFormat = new LineAndPointFormatter(Color.BLUE, null, null, null);
+//
+////        overviewPlot.getGraph().setRotation(Widget.Rotation.NINETY_DEGREES);
+//        //TODO: FORMAT GRAPH!!!
+//
+//        overviewPlot.addSeries(tempSeries, tempFormat);
+//        overviewPlot.addSeries(humSeries, humFormat);
+//        overviewPlot.addSeries(phSeries, phFormat);
     }
 
     private void initData() {
